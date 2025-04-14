@@ -1,0 +1,14 @@
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\App.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Controller\UsuariosController.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Dto\ForoDto.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Dto\LoginDto.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Dto\UsuariosDto.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Mapper\ForoMapper.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Mapper\UsuariosMapper.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Model\Foro.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Model\Usuarios.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Repository\ForoRepository.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Repository\UsuariosRepository.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Security\SecurityConfig.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Service\UsuariosImpl.java
+C:\Users\NewLF\Desktop\mi-microservicio\src\main\java\com\sumativa2\Service\UsuariosService.java
