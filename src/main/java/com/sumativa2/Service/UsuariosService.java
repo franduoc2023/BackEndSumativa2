@@ -15,4 +15,5 @@ public interface UsuariosService {
     Usuarios login(String email, String password);
      List<ForoDto> getForosPorUsuario(Usuarios usuario);
      ForoDto comentarioForo(ForoDto foroDto, Usuarios usuario );
+     Usuarios getUser (Long id);
  }  

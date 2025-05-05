@@ -39,6 +39,12 @@ public class UsuariosImpl implements UsuariosService {
                        .toList();
     }
 
+
+    public Usuarios getUser(Long id) {
+        return usuariosRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
+    }
+
     @Override
     public UsuariosDto updateUsario(Long id, UsuariosDto dto) {
         Usuarios existente = usuariosRepository.findById(id)
