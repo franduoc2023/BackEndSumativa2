@@ -1,1 +1,8 @@
+com\sumativa2\ForoTest.class
+com\sumativa2\UsuariosRepositoryTest.class
+com\sumativa2\MapperTest.class
 com\sumativa2\AppTest.class
+com\sumativa2\UsuariosControllerTest.class
+com\sumativa2\UsuariosTest.class
+com\sumativa2\TestSecurityConfig.class
+com\sumativa2\UsuariosImplTest.class

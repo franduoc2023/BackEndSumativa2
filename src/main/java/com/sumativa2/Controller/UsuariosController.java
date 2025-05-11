@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sumativa2.Repository.ForoRepository;
-import com.sumativa2.Repository.UsuariosRepository;
-import com.sumativa2.Service.*;
+ import com.sumativa2.Service.*;
 import com.sumativa2.Dto.*;
 import com.sumativa2.Mapper.UsuariosMapper;
 import com.sumativa2.Model.Foro;

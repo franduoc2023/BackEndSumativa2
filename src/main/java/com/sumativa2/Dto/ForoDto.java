@@ -6,14 +6,14 @@ public class ForoDto {
     private Long id;
     private String comentario;
     private LocalDate fechaCreacion;
-    private String nombreUsario;
-
+    private String nombreUsuario;
+ 
+    public ForoDto() {}
      private ForoDto(Builder builder) {
         this.id = builder.id;
         this.comentario = builder.comentario;
         this.fechaCreacion = builder.fechaCreacion;
-        this.nombreUsario = builder.nombreUsario;
-    }
+this.nombreUsuario = builder.nombreUsario;     }
 
      public Long getId() {
         return id;
@@ -28,7 +28,7 @@ public class ForoDto {
     }
 
     public String getNombreUsuario() {
-        return nombreUsario;
+        return nombreUsuario;
     }
 
      public void setId(Long id) {
@@ -43,8 +43,8 @@ public class ForoDto {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public void setNombreUsuario(String nombreUsarios) {
-        this.nombreUsario = nombreUsarios;
+    public void setNombreUsuario(String nombreUsario) {
+        this.nombreUsuario = nombreUsario;
     }
 
      public static class Builder {

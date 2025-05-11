@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuariosController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bdget</a> &gt; <a href="index.source.html" class="el_package">com.sumativa2.Controller</a> &gt; <span class="el_source">UsuariosController.java</span></div><h1>UsuariosController.java</h1><pre class="source lang-java linenums">package com.sumativa2.Controller;
+
+ 
+
+import jakarta.servlet.http.HttpSession;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.sumativa2.Repository.ForoRepository;
+ import com.sumativa2.Service.*;
+import com.sumativa2.Dto.*;
+import com.sumativa2.Mapper.UsuariosMapper;
+import com.sumativa2.Model.Foro;
+import com.sumativa2.Model.Usuarios;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = &quot;http://localhost:4200&quot;, allowCredentials = &quot;true&quot;)
+@RestController
+@RequestMapping(&quot;/usuarios&quot;)
+
+<span class="fc" id="L28">public class UsuariosController {</span>
+
+    @Autowired
+    private ForoRepository foroRepository;
+
+    @Autowired
+    private UsuariosService usuariosservice;
+
+    @PostMapping(&quot;/registro&quot;)
+    public ResponseEntity&lt;UsuariosDto&gt; crearUsuario(@RequestBody UsuariosDto usuarioDto) {
+<span class="fc" id="L38">        UsuariosDto usuarioGuardado = usuariosservice.createUsuarios(usuarioDto);</span>
+<span class="fc" id="L39">        return ResponseEntity.ok(usuarioGuardado);</span>
+    }
+
+    @GetMapping
+    public ResponseEntity&lt;List&lt;UsuariosDto&gt;&gt; obtenerUsuarios() {
+<span class="fc" id="L44">        List&lt;UsuariosDto&gt; usuarios = usuariosservice.getAllUsuarios();</span>
+<span class="fc" id="L45">        return ResponseEntity.ok(usuarios);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;UsuariosDto&gt; actualizarUsuario(@PathVariable Long id, @RequestBody UsuariosDto usuarioDto) {
+<span class="nc" id="L50">        UsuariosDto actualizado = usuariosservice.updateUsario(id, usuarioDto);</span>
+
+<span class="nc" id="L52">        return ResponseEntity.ok(actualizado);</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; eliminarUsuario(@PathVariable Long id) {
+<span class="nc" id="L57">        usuariosservice.deleteUsuario(id);</span>
+<span class="nc" id="L58">        return ResponseEntity.ok().build();</span>
+    }
+
+
+    @GetMapping(&quot;/{id}&quot;)
+public ResponseEntity&lt;UsuariosDto&gt; obtenerUsuarioPorId(@PathVariable Long id) {
+<span class="fc" id="L64">    Usuarios usuario = usuariosservice.getUser(id);</span>
+<span class="fc" id="L65"> UsuariosDto dto = UsuariosMapper.toDto(usuario);   </span>
+<span class="fc" id="L66">  return ResponseEntity.ok(dto);</span>
+}
+
+@PostMapping(&quot;/login&quot;)
+public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; login(@RequestBody LoginDto loginDTO, HttpSession session) {
+<span class="fc" id="L71">    Usuarios usuario = usuariosservice.login(loginDTO.getEmail(), loginDTO.getPassword());</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">    if (usuario != null) {</span>
+<span class="nc" id="L73">        session.setAttribute(&quot;usuarioLogueado&quot;, usuario);</span>
+
+<span class="nc" id="L75">        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L76">        response.put(&quot;id&quot;, usuario.getId());</span>
+<span class="nc" id="L77">        response.put(&quot;email&quot;, usuario.getEmail());</span>
+
+<span class="nc" id="L79">        return ResponseEntity.ok(response);</span>
+    } else {
+<span class="fc" id="L81">        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();</span>
+    }
+}
+
+    @GetMapping(&quot;/foro&quot;)
+    public ResponseEntity&lt;List&lt;ForoDto&gt;&gt; obtenerForosDelUsuario(HttpSession session) {
+       
+       
+<span class="fc" id="L89">        Usuarios usuario = (Usuarios) session.getAttribute(&quot;usuarioLogueado&quot;);</span>
+ 
+
+<span class="fc" id="L92">        List&lt;ForoDto&gt; forosDelUsuario = usuariosservice.getForosPorUsuario(usuario);</span>
+<span class="fc" id="L93">        return ResponseEntity.ok(forosDelUsuario);</span>
+    }
+
+    @PostMapping(&quot;/foro&quot;)
+    public ResponseEntity&lt;String&gt; agregarComentarioAlForo(@RequestBody ForoDto foroDto, HttpSession session) {
+<span class="fc" id="L98">        Usuarios usuario = (Usuarios) session.getAttribute(&quot;usuarioLogueado&quot;);</span>
+
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        if (usuario == null) {</span>
+<span class="nc" id="L101">            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(&quot; &quot;);</span>
+        }
+
+<span class="fc" id="L104">        Foro foro = new Foro.Builder()</span>
+<span class="fc" id="L105">            .comentario(foroDto.getComentario())</span>
+<span class="fc" id="L106">            .fechaCreacion(LocalDate.now())</span>
+<span class="fc" id="L107">            .usuario(usuario)</span>
+<span class="fc" id="L108">            .build();</span>
+
+<span class="fc" id="L110">        foroRepository.save(foro);</span>
+
+<span class="fc" id="L112">        return ResponseEntity.ok(&quot; &quot;);</span>
+    }
+
+
+ 
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Usuarios.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bdget</a> &gt; <a href="index.source.html" class="el_package">com.sumativa2.Model</a> &gt; <span class="el_source">Usuarios.java</span></div><h1>Usuarios.java</h1><pre class="source lang-java linenums">package com.sumativa2.Model;
+
+ 
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = &quot;usuarios&quot;)
+public class Usuarios {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;id&quot;)
+    private Long id;
+
+    @Column(name = &quot;nombre&quot;)
+    private String nombre;
+
+    @Column(name = &quot;apellido&quot;)
+    private String apellido;
+
+    @Column(name = &quot;password&quot;)
+    private String password;
+
+    @Column(name = &quot;nombreUsuario&quot;)
+    private String nombreUsuario;
+
+    @Column(name = &quot;fechaNacimiento&quot;)
+    private LocalDate fechaNacimiento;
+
+    @Column(name = &quot;email&quot;)
+    private String email;
+
+<span class="fc" id="L40">    private Usuarios(Builder builder) {</span>
+<span class="fc" id="L41">        this.id = builder.id;</span>
+<span class="fc" id="L42">        this.nombre = builder.nombre;</span>
+<span class="fc" id="L43">        this.apellido = builder.apellido;</span>
+<span class="fc" id="L44">        this.password = builder.password;</span>
+<span class="fc" id="L45">        this.nombreUsuario = builder.nombreUsuario;</span>
+<span class="fc" id="L46">        this.fechaNacimiento = builder.fechaNacimiento;</span>
+<span class="fc" id="L47">        this.email = builder.email;</span>
+<span class="fc" id="L48">    }</span>
+
+<span class="fc" id="L50">    public Usuarios() {</span>
+<span class="fc" id="L51">    }</span>
+
+     public Long getId() {
+<span class="fc" id="L54">        return id;</span>
+    }
+
+    public String getNombre() {
+<span class="fc" id="L58">        return nombre;</span>
+    }
+
+    public String getApellido() {
+<span class="fc" id="L62">        return apellido;</span>
+    }
+
+    public String getPassword() {
+<span class="fc" id="L66">        return password;</span>
+    }
+
+    public String getNombreUsuario() {
+<span class="fc" id="L70">        return nombreUsuario;</span>
+    }
+
+    public LocalDate getFechaNacimiento() {
+<span class="fc" id="L74">        return fechaNacimiento;</span>
+    }
+
+    public String getEmail() {
+<span class="fc" id="L78">        return email;</span>
+    }
+
+<span class="fc" id="L81">     public static class Builder {</span>
+        private Long id;
+        private String nombre;
+        private String apellido;
+        private String password;
+        private String nombreUsuario;
+        private LocalDate fechaNacimiento;
+        private String email;
+
+        public Builder id(Long id) {
+<span class="fc" id="L91">            this.id = id;</span>
+<span class="fc" id="L92">            return this;</span>
+        }
+
+        public Builder nombre(String nombre) {
+<span class="fc" id="L96">            this.nombre = nombre;</span>
+<span class="fc" id="L97">            return this;</span>
+        }
+
+        public Builder apellido(String apellido) {
+<span class="fc" id="L101">            this.apellido = apellido;</span>
+<span class="fc" id="L102">            return this;</span>
+        }
+
+        public Builder password(String password) {
+<span class="fc" id="L106">            this.password = password;</span>
+<span class="fc" id="L107">            return this;</span>
+        }
+
+        public Builder nombreUsuario(String nombreUsuario) {
+<span class="fc" id="L111">            this.nombreUsuario = nombreUsuario;</span>
+<span class="fc" id="L112">            return this;</span>
+        }
+
+        public Builder fechaNacimiento(LocalDate fechaNacimiento) {
+<span class="fc" id="L116">            this.fechaNacimiento = fechaNacimiento;</span>
+<span class="fc" id="L117">            return this;</span>
+        }
+
+        public Builder email(String email) {
+<span class="fc" id="L121">            this.email = email;</span>
+<span class="fc" id="L122">            return this;</span>
+        }
+
+        public Usuarios build() {
+<span class="fc" id="L126">            return new Usuarios(this);</span>
+        }
+
+         public String getNombreUsuario() {
+<span class="nc" id="L130">            return nombreUsuario;</span>
+        }
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

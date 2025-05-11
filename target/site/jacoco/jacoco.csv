@@ -1,0 +1,16 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+bdget,com.sumativa2.Dto,UsuariosDto.Builder,0,43,0,0,0,16,0,9,0,9
+bdget,com.sumativa2.Dto,UsuariosDto,0,55,0,0,0,18,0,9,0,9
+bdget,com.sumativa2.Dto,ForoDto.Builder,0,28,0,0,0,10,0,6,0,6
+bdget,com.sumativa2.Dto,LoginDto,0,17,0,0,0,7,0,5,0,5
+bdget,com.sumativa2.Dto,ForoDto,18,32,0,0,8,10,5,5,5,5
+bdget,com.sumativa2.Service,UsuariosImpl,27,131,1,1,4,36,5,9,4,9
+bdget,com.sumativa2.Mapper,ForoMapper,25,20,3,1,8,7,4,1,2,1
+bdget,com.sumativa2.Mapper,UsuariosMapper,3,52,0,0,1,18,1,2,1,2
+bdget,com.sumativa2,App,5,3,0,0,2,1,1,1,1,1
+bdget,com.sumativa2.Model,Usuarios.Builder,3,43,0,0,1,16,1,9,1,9
+bdget,com.sumativa2.Model,Foro,0,47,0,0,0,18,0,9,0,9
+bdget,com.sumativa2.Model,Foro.Builder,0,28,0,0,0,10,0,6,0,6
+bdget,com.sumativa2.Model,Usuarios,0,55,0,0,0,18,0,9,0,9
+bdget,com.sumativa2.Controller,UsuariosController,44,83,2,2,10,23,4,7,2,7
+bdget,com.sumativa2.Security,SecurityConfig,221,0,0,0,34,0,9,0,9,0

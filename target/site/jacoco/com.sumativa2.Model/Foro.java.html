@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Foro.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bdget</a> &gt; <a href="index.source.html" class="el_package">com.sumativa2.Model</a> &gt; <span class="el_source">Foro.java</span></div><h1>Foro.java</h1><pre class="source lang-java linenums">package com.sumativa2.Model;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = &quot;foro&quot;)
+public class Foro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String comentario;
+
+    private LocalDate fechaCreacion;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;usuarios_id&quot;)
+    private Usuarios usuario;
+
+<span class="fc" id="L22">     private Foro(Builder builder) {</span>
+<span class="fc" id="L23">        this.id = builder.id;</span>
+<span class="fc" id="L24">        this.comentario = builder.comentario;</span>
+<span class="fc" id="L25">        this.fechaCreacion = builder.fechaCreacion;</span>
+<span class="fc" id="L26">        this.usuario = builder.usuario;</span>
+<span class="fc" id="L27">    }</span>
+
+     public Long getId() {
+<span class="fc" id="L30">        return id;</span>
+    }
+
+    public String getComentario() {
+<span class="fc" id="L34">        return comentario;</span>
+    }
+
+    public LocalDate getFechaCreacion() {
+<span class="fc" id="L38">        return fechaCreacion;</span>
+    }
+
+    public Usuarios getUsuario() {
+<span class="fc" id="L42">        return usuario;</span>
+    }
+
+     public void setId(Long id) {
+<span class="fc" id="L46">        this.id = id;</span>
+<span class="fc" id="L47">    }</span>
+
+    public void setComentario(String comentario) {
+<span class="fc" id="L50">        this.comentario = comentario;</span>
+<span class="fc" id="L51">    }</span>
+
+    public void setFechaCreacion(LocalDate fechaCreacion) {
+<span class="fc" id="L54">        this.fechaCreacion = fechaCreacion;</span>
+<span class="fc" id="L55">    }</span>
+
+    public void setUsuario(Usuarios usuario) {
+<span class="fc" id="L58">        this.usuario = usuario;</span>
+<span class="fc" id="L59">    }</span>
+
+<span class="fc" id="L61">    public static class Builder {</span>
+        private Long id;
+        private String comentario;
+        private LocalDate fechaCreacion;
+        private Usuarios usuario;
+
+        public Builder id(Long id) {
+<span class="fc" id="L68">            this.id = id;</span>
+<span class="fc" id="L69">            return this;</span>
+        }
+
+        public Builder comentario(String comentario) {
+<span class="fc" id="L73">            this.comentario = comentario;</span>
+<span class="fc" id="L74">            return this;</span>
+        }
+
+        public Builder fechaCreacion(LocalDate fechaCreacion) {
+<span class="fc" id="L78">            this.fechaCreacion = fechaCreacion;</span>
+<span class="fc" id="L79">            return this;</span>
+        }
+
+        public Builder usuario(Usuarios usuario) {
+<span class="fc" id="L83">            this.usuario = usuario;</span>
+<span class="fc" id="L84">            return this;</span>
+        }
+
+        public Foro build() {
+<span class="fc" id="L88">            return new Foro(this);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
